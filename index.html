@@ -7,44 +7,58 @@
   <body>
     <ul id="people"></ul>
     <script>
-    // Valid JSON objects cannot have a function as a value
-      let person = {
-        name: "Seto Kaiba",
-        age: 30,
-        address: {
-          street: "123 Fake St",
-          city: "NYC"
-        },
-        children: ["Joey", "Tea"]
-      }
-
-      // Convert a JS object into a JSON string
-      // person = JSON.stringify(person);
-      // Convert a JSON string back into a JS object
-      // person = JSON.parse(person);
-
-      var people = [
-        {
-          name: "Yugi",
-          age: "28"
-        },
-        {
-          name: "Joey",
-          age: "26"
-        },
-        {
-          name: "Tea",
-          age: "26"
+    // // Valid JSON objects cannot have a function as a value
+    //   let person = {
+    //     name: "Seto Kaiba",
+    //     age: 30,
+    //     address: {
+    //       street: "123 Fake St",
+    //       city: "NYC"
+    //     },
+    //     children: ["Joey", "Tea"]
+    //   }
+    //
+    //   // Convert a JS object into a JSON string
+    //   // person = JSON.stringify(person);
+    //   // Convert a JSON string back into a JS object
+    //   // person = JSON.parse(person);
+    //
+    //   var people = [
+    //     {
+    //       name: "Yugi",
+    //       age: "28"
+    //     },
+    //     {
+    //       name: "Joey",
+    //       age: "26"
+    //     },
+    //     {
+    //       name: "Tea",
+    //       age: "26"
+    //     }
+    //   ];
+    //
+    //   // console.log(people[1].age);
+    //   let output = '';
+    //   for (let i=0; i<people.length; i++) {
+    //     // console.log(people[i].name);
+    //     output += '<li>' + people[i].name + '</li>';
+    //   }
+    //   document.getElementById('people').innerHTML = output;
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          let response = JSON.parse(xhr.responseText);
+          let people = response.people;
+          let output = '';
+          for (let i=0; i<people.length; i++) {
+            output += '<li>' + people[i].name + '</li>';
+          }
+          document.getElementById('people').innerHTML = output;
         }
-      ];
-
-      // console.log(people[1].age);
-      let output = '';
-      for (let i=0; i<people.length; i++) {
-        // console.log(people[i].name);
-        output += '<li>' + people[i].name + '</li>';
-      }
-      document.getElementById('people').innerHTML = output;
+      };
+      xhr.open("GET", "people.json", true);
+      xhr.send();
     </script>
   </body>
 </html>
