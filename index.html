@@ -7,7 +7,17 @@
   <body>
 
     <script>
-      
+    // Valid JSON objects cannot have a function as a value
+      let person = {
+        name: "Seto Kaiba",
+        age: 30
+      }
+      // Convert a JS object into a JSON string
+      person = JSON.stringify(person);
+      // Convert a JSON string back into a JS object
+      person = JSON.parse(person);
+
+      console.log(person.name);
     </script>
   </body>
 </html>
