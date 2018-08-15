@@ -10,14 +10,40 @@
     // Valid JSON objects cannot have a function as a value
       let person = {
         name: "Seto Kaiba",
-        age: 30
+        age: 30,
+        address: {
+          street: "123 Fake St",
+          city: "NYC"
+        },
+        children: ["Joey", "Tea"]
       }
-      // Convert a JS object into a JSON string
-      person = JSON.stringify(person);
-      // Convert a JSON string back into a JS object
-      person = JSON.parse(person);
 
-      console.log(person.name);
+      // Convert a JS object into a JSON string
+      // person = JSON.stringify(person);
+      // Convert a JSON string back into a JS object
+      // person = JSON.parse(person);
+
+      var people = [
+        {
+          name: "Yugi",
+          age: "28"
+        },
+        {
+          name: "Joey",
+          age: "26"
+        },
+        {
+          name: "Tea",
+          age: "26"
+        }
+      ];
+
+      // console.log(people[1].age);
+
+      for (let i=0; i<people.length; i++) {
+        console.log(people[i].name);
+      }
+
     </script>
   </body>
 </html>
